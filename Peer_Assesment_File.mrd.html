@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Peer Assesment 1 Knitr and Analysis</title>
+<title>?ploPeer Assesment 1 Knitr and Analysis</title>
 
 <style type="text/css">
 body, td {
@@ -179,7 +179,7 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>Peer Assesment 1 Knitr and Analysis</h1>
+<h1>?ploPeer Assesment 1 Knitr and Analysis</h1>
 
 <h2>Loading and preprocessing the data</h2>
 
@@ -314,6 +314,36 @@ summary2 &lt;- aggregate(RawData$new, by = list(RawData$date), FUN = sum, na.rm 
 RawData$Ind &lt;- &quot;Weekday&quot;
 RawData[RawData$day == &quot;Sunday&quot;, ]$Ind &lt;- &quot;Weekend&quot;
 RawData[RawData$day == &quot;Saturday&quot;, ]$Ind &lt;- &quot;Weekend&quot;
+byWeekday &lt;- aggregate(RawData[RawData$day == &quot;Weekday&quot;, ]$new, by = list(RawData[RawData$day == 
+    &quot;Weekday&quot;, ]$interval), FUN = mean, na.rm = TRUE)
+</code></pre>
+
+<pre><code>## Error: no rows to aggregate
+</code></pre>
+
+<pre><code class="r">byWeekEnd &lt;- aggregate(RawData[RawData$day == &quot;Weekend&quot;, ]$new, by = list(RawData[RawData$day == 
+    &quot;Weekend&quot;, ]$interval), FUN = mean, na.rm = TRUE)
+</code></pre>
+
+<pre><code>## Error: no rows to aggregate
+</code></pre>
+
+<pre><code class="r">par(mfrow = c(2, 1))
+par(cex = 0.6)
+par(mar = c(0, 0, 0, 0))
+
+plot(byWeekday, type = &quot;l&quot;, ylab = &quot;Steps&quot;, xlab = &quot;Time in 5 Minute Increments&quot;, 
+    main = &quot;Steps by Time by Weekday&quot;)
+</code></pre>
+
+<pre><code>## Error: object &#39;byWeekday&#39; not found
+</code></pre>
+
+<pre><code class="r">plot(byWeekEnd, type = &quot;l&quot;, ylab = &quot;Steps&quot;, xlab = &quot;Time in 5 Minute Increments&quot;, 
+    main = &quot;Steps by Time by Weekend&quot;)
+</code></pre>
+
+<pre><code>## Error: object &#39;byWeekEnd&#39; not found
 </code></pre>
 
 </body>

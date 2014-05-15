@@ -1,4 +1,4 @@
-Peer Assesment 1 Knitr and Analysis
+?ploPeer Assesment 1 Knitr and Analysis
 ========================================================
 
 ## Loading and preprocessing the data
@@ -167,7 +167,7 @@ median(summary2$x)
 ## Are there differences in activity patterns between weekdays and weekends?
 
 To look at the difference between weekend and weekdays it is first necessary to identify what values represent a weekend and a weekday.
-
+ 
 - I am creating a column that stores day of week using the weekdays function, to do this I need to also convert date to a date format
 - next I am adding a column called Ind that will show if it is a weekday or weekend 
 - 1 will be for weekend and I need to update all entries for both Saturday and Sunday  
@@ -180,6 +180,44 @@ RawData$day <- weekdays(strptime(RawData$date, "%Y-%m-%d"))
 RawData$Ind <- "Weekday"
 RawData[RawData$day == "Sunday", ]$Ind <- "Weekend"
 RawData[RawData$day == "Saturday", ]$Ind <- "Weekend"
+byWeekday <- aggregate(RawData[RawData$day == "Weekday", ]$new, by = list(RawData[RawData$day == 
+    "Weekday", ]$interval), FUN = mean, na.rm = TRUE)
+```
+
+```
+## Error: no rows to aggregate
+```
+
+```r
+byWeekEnd <- aggregate(RawData[RawData$day == "Weekend", ]$new, by = list(RawData[RawData$day == 
+    "Weekend", ]$interval), FUN = mean, na.rm = TRUE)
+```
+
+```
+## Error: no rows to aggregate
 ```
 
  
+
+```r
+par(mfrow = c(2, 1))
+par(cex = 0.6)
+par(mar = c(0, 0, 0, 0))
+
+plot(byWeekday, type = "l", ylab = "Steps", xlab = "Time in 5 Minute Increments", 
+    main = "Steps by Time by Weekday")
+```
+
+```
+## Error: object 'byWeekday' not found
+```
+
+```r
+plot(byWeekEnd, type = "l", ylab = "Steps", xlab = "Time in 5 Minute Increments", 
+    main = "Steps by Time by Weekend")
+```
+
+```
+## Error: object 'byWeekEnd' not found
+```
+
