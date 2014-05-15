@@ -27,15 +27,30 @@ summary <- aggregate(RawData$steps,by=list(RawData$date),FUN=sum,na.rm=TRUE)
 ```{r fig.width=7, fig.height=6}
  hist(summary$x,col="blue",xlab="Steps",main="Histogram of Steps per Day")
 
-bytime[bytime$x== max(bytime$x),]$Group.1
+
 ```
 
 ```{r}
 mean(summary$x)
 median(summary$x)
 bytime <- aggregate(RawData$steps,by=list(RawData$interval),FUN=mean,na.rm=TRUE)
+bytime[bytime$x== max(bytime$x),]$Group.1
 plot(bytime, type='l',ylab="Steps",xlab="Time in 5 Minute Increments",main="Steps by Time")
 sum(!complete.cases(RawData$steps))
 RawData$rep <- bytime$x
 
-```
+
+RawData$new <- RawData$steps
+RawData[!complete.cases(RawData$steps),]$new <- RawData[!complete.cases(RawData$steps),]$rep
+
+summary2 <- aggregate(RawData$new,by=list(RawData$date),FUN=sum,na.rm=TRUE)
+hist(summary2$x,col="blue",xlab="Steps",main="Histogram of Steps per Day")
+mean(summary2$x)
+median(summary2$x)
+weekdays(strptime(RawData$date, "%Y-%m-%d"))
+Weekend<-c("Saturday","Sunday")
+weekday<-c("Monday","Tuesday","Wednesday","Thursday","Friday")
+RawData$day <- weekdays(strptime(RawData$date, "%Y-%m-%d"))
+RawData$Ind <- 0
+RawData[RawData$day == "Sunday",]$Ind <- 1
+RawData[RawData$day == "Saturday",]$Ind <- 1
