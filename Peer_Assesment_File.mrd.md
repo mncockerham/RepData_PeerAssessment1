@@ -180,21 +180,10 @@ RawData$day <- weekdays(strptime(RawData$date, "%Y-%m-%d"))
 RawData$Ind <- "Weekday"
 RawData[RawData$day == "Sunday", ]$Ind <- "Weekend"
 RawData[RawData$day == "Saturday", ]$Ind <- "Weekend"
-byWeekday <- aggregate(RawData[RawData$day == "Weekday", ]$new, by = list(RawData[RawData$day == 
+byWeekday <- aggregate(RawData[RawData$Ind == "Weekday", ]$new, by = list(RawData[RawData$Ind == 
     "Weekday", ]$interval), FUN = mean, na.rm = TRUE)
-```
-
-```
-## Error: no rows to aggregate
-```
-
-```r
-byWeekEnd <- aggregate(RawData[RawData$day == "Weekend", ]$new, by = list(RawData[RawData$day == 
+byWeekEnd <- aggregate(RawData[RawData$Ind == "Weekend", ]$new, by = list(RawData[RawData$Ind == 
     "Weekend", ]$interval), FUN = mean, na.rm = TRUE)
-```
-
-```
-## Error: no rows to aggregate
 ```
 
  
@@ -202,22 +191,13 @@ byWeekEnd <- aggregate(RawData[RawData$day == "Weekend", ]$new, by = list(RawDat
 ```r
 par(mfrow = c(2, 1))
 par(cex = 0.6)
-par(mar = c(0, 0, 0, 0))
-
+par(mar = c(1, 1, 1.5, 1))
+par(col = "blue")
+par(bg = "gray")
+plot(byWeekEnd, type = "l", ylab = "Steps", xlab = "", main = "Weekend")
 plot(byWeekday, type = "l", ylab = "Steps", xlab = "Time in 5 Minute Increments", 
-    main = "Steps by Time by Weekday")
+    main = "Weekday")
 ```
 
-```
-## Error: object 'byWeekday' not found
-```
-
-```r
-plot(byWeekEnd, type = "l", ylab = "Steps", xlab = "Time in 5 Minute Increments", 
-    main = "Steps by Time by Weekend")
-```
-
-```
-## Error: object 'byWeekEnd' not found
-```
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
 
