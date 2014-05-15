@@ -34,7 +34,7 @@ We can then quicly generate a histogram showing the number of steps a day, this 
 hist(summary$x, col = "blue", xlab = "Steps", main = "Histogram of Steps per Day")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk Chart1](figure/Chart1.png) 
 
 
 The values in the historgram have a mean and median value of:
@@ -78,7 +78,7 @@ plot(bytime, type = "l", ylab = "Steps", xlab = "Time in 5 Minute Increments",
     main = "Steps by Time")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk Chart2](figure/Chart2.png) 
 
 
 
@@ -139,7 +139,7 @@ A new historgram can then be created with these values.
 hist(summary2$x, col = "red", xlab = "Steps", main = "Histogram of Steps per Day")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+![plot of chunk Chart3](figure/Chart3.png) 
 
 
 The values in the historgram have a mean and median value of:
@@ -199,5 +199,5 @@ plot(byWeekday, type = "l", ylab = "Steps", xlab = "Time in 5 Minute Increments"
     main = "Weekday")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
+![plot of chunk Chart4](figure/Chart4.png) 
 
